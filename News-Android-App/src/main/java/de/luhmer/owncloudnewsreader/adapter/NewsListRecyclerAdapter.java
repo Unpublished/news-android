@@ -38,14 +38,14 @@ public class NewsListRecyclerAdapter extends RecyclerView.Adapter {
 
     private long idOfCurrentlyPlayedPodcast = -1;
 
-    private List<RssItem> lazyList;
-    private DatabaseConnectionOrm dbConn;
+    List<RssItem> lazyList;
+    DatabaseConnectionOrm dbConn;
     private PostDelayHandler pDelayHandler;
-    private FragmentActivity activity;
+    FragmentActivity activity;
     private HashSet<Long> stayUnreadItems = new HashSet<>();
 
-    private int totalItemCount = 0;
-    private int cachedPages = 1;
+    int totalItemCount = 0;
+    int cachedPages = 1;
 
     public int getTotalItemCount() {
         return totalItemCount;
@@ -65,10 +65,10 @@ public class NewsListRecyclerAdapter extends RecyclerView.Adapter {
 
     private IPlayPausePodcastClicked playPausePodcastClicked;
 
-    private boolean loading = false;
+    boolean loading = false;
     // The minimum amount of items to have below your current scroll position
     // before loading more.
-    private int visibleThreshold = 5;
+    int visibleThreshold = 5;
 
     public NewsListRecyclerAdapter(FragmentActivity activity, RecyclerView recyclerView, IPlayPausePodcastClicked playPausePodcastClicked, PostDelayHandler postDelayHandler) {
         this.activity = activity;
@@ -296,7 +296,7 @@ public class NewsListRecyclerAdapter extends RecyclerView.Adapter {
 
 
 
-    private List<RssItem> refreshAdapterData() {
+    List<RssItem> refreshAdapterData() {
         List<RssItem> rssItems = new ArrayList<>();
         DatabaseConnectionOrm dbConn = new DatabaseConnectionOrm(activity);
         for(int i = 0; i < cachedPages; i++) {
@@ -375,7 +375,7 @@ public class NewsListRecyclerAdapter extends RecyclerView.Adapter {
     }
 
 
-    private class LoadMoreItemsAsyncTask extends AsyncTask<Void, Void, List<RssItem>> {
+    class LoadMoreItemsAsyncTask extends AsyncTask<Void, Void, List<RssItem>> {
         @Override
         protected List<RssItem> doInBackground(Void... params) {
             StopWatch sw = new StopWatch();

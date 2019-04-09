@@ -32,7 +32,7 @@ public class DownloadChangelogTask extends AsyncTask<Void, Void, String> {
 
     private Context mContext;
     private ChangeLogFileListView mChangelogView;
-    private Listener mListener;
+    Listener mListener;
     private IOException exception;
 
     /**

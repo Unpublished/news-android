@@ -55,7 +55,7 @@ public class DatabaseConnectionOrm {
     private static final String[] VIDEO_FORMATS = { "youtube", "video/mp4" };
     public enum SORT_DIRECTION { asc, desc }
 
-    private DaoSession daoSession;
+    DaoSession daoSession;
 
     private final static int PageSize = 100;
 

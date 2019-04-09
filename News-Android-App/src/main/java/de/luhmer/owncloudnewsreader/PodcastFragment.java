@@ -68,9 +68,9 @@ import de.luhmer.owncloudnewsreader.view.PodcastSlidingUpPanelLayout;
  */
 public class PodcastFragment extends Fragment {
 
-    private static final String TAG = PodcastFragment.class.getCanonicalName();
+    static final String TAG = PodcastFragment.class.getCanonicalName();
 
-    private UpdatePodcastStatusEvent podcast;
+    UpdatePodcastStatusEvent podcast;
     private int lastDrawableId;
 
     private OnFragmentInteractionListener mListener;

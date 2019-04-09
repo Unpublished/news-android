@@ -40,7 +40,7 @@ public class UserInfo implements Serializable {
         }
     }
 
-    private UserInfo(String userId, String displayName, Bitmap avatar, Long lastLoginTimestamp) {
+    UserInfo(String userId, String displayName, Bitmap avatar, Long lastLoginTimestamp) {
         this.userId = userId;
         this.displayName = displayName;
         this.avatar = avatar;

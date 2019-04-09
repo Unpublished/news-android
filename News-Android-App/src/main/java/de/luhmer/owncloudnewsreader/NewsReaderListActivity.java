@@ -133,7 +133,7 @@ import static de.luhmer.owncloudnewsreader.LoginDialogFragment.ShowAlertDialog;
 public class NewsReaderListActivity extends PodcastFragmentActivity implements
 		 NewsReaderListFragment.Callbacks, RecyclerItemClickListener, SwipeRefreshLayout.OnRefreshListener, SearchView.OnQueryTextListener {
 
-	private static final String TAG = NewsReaderListActivity.class.getCanonicalName();
+	static final String TAG = NewsReaderListActivity.class.getCanonicalName();
 
 	public static final String FOLDER_ID = "FOLDER_ID";
 	public static final String FEED_ID = "FEED_ID";
@@ -366,7 +366,7 @@ public class NewsReaderListActivity extends PodcastFragmentActivity implements
     }
 
 
-    private void showTapLogoToSyncShowcaseView() {
+    void showTapLogoToSyncShowcaseView() {
         getSlidingListFragment().showTapLogoToSyncShowcaseView();
     }
 
@@ -989,8 +989,8 @@ public class NewsReaderListActivity extends PodcastFragmentActivity implements
         }
     }
 
-    private void ensureCorrectTheme(Intent data) {
-       SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+    void ensureCorrectTheme(Intent data) {
+        SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String oldListLayout = data.getStringExtra(SettingsActivity.SP_FEED_LIST_LAYOUT);
         String newListLayout = mPrefs.getString(SettingsActivity.SP_FEED_LIST_LAYOUT,"0");
 

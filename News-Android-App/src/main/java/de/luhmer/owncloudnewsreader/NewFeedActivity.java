@@ -65,7 +65,7 @@ import retrofit2.Response;
 
 public class NewFeedActivity extends AppCompatActivity {
 
-    private static final String TAG = NewFeedActivity.class.getCanonicalName();
+    static final String TAG = NewFeedActivity.class.getCanonicalName();
     public final static String ADD_NEW_SUCCESS = "success";
 
     // UI references.

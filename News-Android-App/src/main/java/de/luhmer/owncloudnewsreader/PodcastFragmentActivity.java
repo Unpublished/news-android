@@ -71,14 +71,14 @@ import static de.luhmer.owncloudnewsreader.services.PodcastPlaybackService.PLAYB
 
 public class PodcastFragmentActivity extends AppCompatActivity implements IPlayPausePodcastClicked {
 
-    private static final String TAG = PodcastFragmentActivity.class.getCanonicalName();
+    static final String TAG = PodcastFragmentActivity.class.getCanonicalName();
 
     @Inject protected SharedPreferences mPrefs;
     @Inject protected ApiProvider mApi;
     @Inject protected MemorizingTrustManager mMTM;
     @Inject protected PostDelayHandler mPostDelayHandler;
 
-    private MediaBrowserCompat mMediaBrowser;
+    MediaBrowserCompat mMediaBrowser;
     private EventBus eventBus;
     private PodcastFragment mPodcastFragment;
     private int appHeight;
@@ -99,7 +99,7 @@ public class PodcastFragmentActivity extends AppCompatActivity implements IPlayP
     private static final int animationTime = 300; //Milliseconds
     private boolean isFullScreen = false;
     private float scaleFactor = 1;
-    private boolean useAnimation = false;
+    boolean useAnimation = false;
 
 
     @Override

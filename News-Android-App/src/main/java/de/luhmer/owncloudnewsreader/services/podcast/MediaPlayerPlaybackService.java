@@ -19,8 +19,8 @@ import de.luhmer.owncloudnewsreader.model.PodcastItem;
  */
 
 public class MediaPlayerPlaybackService extends PlaybackService {
-    private static final String TAG = MediaPlayerPlaybackService.class.getCanonicalName();
-    private MediaPlayer mMediaPlayer;
+    static final String TAG = MediaPlayerPlaybackService.class.getCanonicalName();
+    MediaPlayer mMediaPlayer;
     private View parentResizableView;
 
     public MediaPlayerPlaybackService(final Context context, PodcastStatusListener podcastStatusListener, MediaItem mediaItem) {
@@ -166,15 +166,13 @@ public class MediaPlayerPlaybackService extends PlaybackService {
     }
 
 
-    private int mSurfaceWidth;
-    private int mSurfaceHeight;
-    private SurfaceHolder mSurfaceHolder;
+    int mSurfaceWidth;
+    SurfaceHolder mSurfaceHolder;
     SurfaceHolder.Callback mSHCallback = new SurfaceHolder.Callback()
     {
         public void surfaceChanged(SurfaceHolder holder, int format, int surfaceWidth, int surfaceHeight)
         {
             mSurfaceWidth = surfaceWidth;
-            mSurfaceHeight = surfaceHeight;
         }
 
         public void surfaceCreated(SurfaceHolder holder)

@@ -38,8 +38,8 @@ public class ZoomableRelativeLayout extends RelativeLayout {
     private float mLastTouchY;
     private int mActivePointerId;
 
-    private float mInitHeight = INVALID_SIZE;
-    private float mInitWidth = INVALID_SIZE;
+    float mInitHeight = INVALID_SIZE;
+    float mInitWidth = INVALID_SIZE;
 
     public ZoomableRelativeLayout(Context context) {
         super(context);
@@ -104,7 +104,7 @@ public class ZoomableRelativeLayout extends RelativeLayout {
         canvas.restore();
     }*/
 
-    private class DoubleTapListener extends GestureDetector.SimpleOnGestureListener {
+    class DoubleTapListener extends GestureDetector.SimpleOnGestureListener {
 
         // event when double tap occurs
         @Override
@@ -126,7 +126,7 @@ public class ZoomableRelativeLayout extends RelativeLayout {
     public float getVideoXPosition() {return mVideoXPosition;}
     public float getVideoYPosition() {return mVideoYPosition;}
 
-    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+    class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
         public void onScaleEnd(ScaleGestureDetector detector) {
             if(!disableScale) {

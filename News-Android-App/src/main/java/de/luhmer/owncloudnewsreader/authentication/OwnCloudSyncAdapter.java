@@ -51,7 +51,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class OwnCloudSyncAdapter extends AbstractThreadedSyncAdapter {
 
-    private static final String TAG = OwnCloudSyncAdapter.class.getCanonicalName();
+    static final String TAG = OwnCloudSyncAdapter.class.getCanonicalName();
     public boolean syncRunning = false;
 
     protected @Inject SharedPreferences mPrefs;
@@ -98,9 +98,9 @@ public class OwnCloudSyncAdapter extends AbstractThreadedSyncAdapter {
 
 
     private class NextcloudSyncResult {
-        private final List<Folder> folders;
-        private final List<Feed>   feeds;
-        private final boolean      stateSyncSuccessful;
+        final List<Folder> folders;
+        final List<Feed>   feeds;
+        final boolean      stateSyncSuccessful;
 
         NextcloudSyncResult(List<Folder> folders, List<Feed> feeds, Boolean stateSyncSuccessful) {
             this.folders = folders;
@@ -218,7 +218,7 @@ public class OwnCloudSyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
 
-    private void throwException(Throwable ex) {
+    void throwException(Throwable ex) {
         Log.e(TAG, "throwException() called [" + Thread.currentThread().getName() + "]", ex);
         syncRunning = false;
         if(ex instanceof Exception) {

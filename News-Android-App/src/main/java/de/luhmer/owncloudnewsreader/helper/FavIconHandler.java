@@ -113,7 +113,7 @@ public class FavIconHandler {
         });
     }
 
-    private void DownloadFinished(long feedId, Bitmap bitmap) {
+    void DownloadFinished(long feedId, Bitmap bitmap) {
         if(bitmap != null) {
             DatabaseConnectionOrm dbConn = new DatabaseConnectionOrm(context);
             Feed feed = dbConn.getFeedById(feedId);

@@ -66,10 +66,10 @@ import static de.luhmer.owncloudnewsreader.ListView.SubscriptionExpandableListAd
 import static de.luhmer.owncloudnewsreader.ListView.SubscriptionExpandableListAdapter.SPECIAL_FOLDERS.ITEMS_WITHOUT_FOLDER;
 
 public class SubscriptionExpandableListAdapter extends BaseExpandableListAdapter {
-    private final String TAG = getClass().getCanonicalName();
+    final String TAG = getClass().getCanonicalName();
 
     private Context mContext;
-    private DatabaseConnectionOrm dbConn;
+    DatabaseConnectionOrm dbConn;
 
     private ListView listView;
 
@@ -78,9 +78,9 @@ public class SubscriptionExpandableListAdapter extends BaseExpandableListAdapter
     private FavIconHandler favIconHandler;
     private LayoutInflater inflater;
 
-    private ArrayList<AbstractItem> mCategoriesArrayList;
-    private SparseArray<ArrayList<ConcreteFeedItem>> mItemsArrayList;
-    private boolean showOnlyUnread = false;
+    ArrayList<AbstractItem> mCategoriesArrayList;
+    SparseArray<ArrayList<ConcreteFeedItem>> mItemsArrayList;
+    boolean showOnlyUnread = false;
     private Integer btn_rating_star_off_normal_holo_light;
 
     private SparseArray<String> starredCountFeeds;
@@ -399,7 +399,7 @@ public class SubscriptionExpandableListAdapter extends BaseExpandableListAdapter
     }
 
 
-    private class NotifyDataSetChangedAsyncTask extends AsyncTask<Void, Void, Void> {
+    class NotifyDataSetChangedAsyncTask extends AsyncTask<Void, Void, Void> {
         SparseArray<String> starredCountFeedsTemp;
         SparseArray<String> unreadCountFoldersTemp;
         SparseArray<String> unreadCountFeedsTemp;

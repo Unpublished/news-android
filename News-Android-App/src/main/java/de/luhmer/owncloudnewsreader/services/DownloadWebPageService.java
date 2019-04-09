@@ -47,7 +47,7 @@ import static de.luhmer.owncloudnewsreader.Constants.NOTIFICATION_ACTION_STOP_ST
  */
 public class DownloadWebPageService extends Service {
 
-    private static final String TAG = DownloadWebPageService.class.getCanonicalName();
+    static final String TAG = DownloadWebPageService.class.getCanonicalName();
     private static final int JOB_ID = 1002;
     private static final int NOTIFICATION_ID = JOB_ID;
     private static final String CHANNEL_ID = "Download Web Page Service";
@@ -114,7 +114,7 @@ public class DownloadWebPageService extends Service {
         stopSelf();
     }
 
-    private void runOnMainThreadAndWait(final Runnable runnable) throws InterruptedException {
+    void runOnMainThreadAndWait(final Runnable runnable) throws InterruptedException {
         synchronized(runnable) {
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
@@ -130,7 +130,7 @@ public class DownloadWebPageService extends Service {
         }
     }
 
-    private void delayedRunOnMainThread(Runnable runnable, int waitMillis) {
+    void delayedRunOnMainThread(Runnable runnable, int waitMillis) {
         try {
             Thread.sleep(waitMillis);
             runOnMainThreadAndWait(runnable);
@@ -312,7 +312,7 @@ public class DownloadWebPageService extends Service {
         }
     }
 
-    private synchronized void updateNotificationProgress() {
+    synchronized void updateNotificationProgress() {
         if(interrupted.get()) {
             Log.v(TAG, "interrupted.. stop requested.. do not show progress anymore!");
         } else {

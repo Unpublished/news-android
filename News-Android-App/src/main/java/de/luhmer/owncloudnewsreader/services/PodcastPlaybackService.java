@@ -56,16 +56,16 @@ public class PodcastPlaybackService extends MediaBrowserServiceCompat {
 
     public static final String PLAYBACK_SPEED_FLOAT = "PLAYBACK_SPEED";
     public static final String CURRENT_PODCAST_ITEM_MEDIA_ITEM= "CURRENT_PODCAST_ITEM";
-    private PodcastNotification podcastNotification;
+    PodcastNotification podcastNotification;
 
     private EventBus eventBus;
-    private Handler mHandler;
+    Handler mHandler;
 
-    private PlaybackService mPlaybackService;
+    PlaybackService mPlaybackService;
     private MediaSessionCompat mSession;
 
     public static final float PLAYBACK_SPEEDS[] = { 0.25f, 0.5f, 0.75f, 1.0f, 1.25f, 1.5f, 1.75f, 2.0f, 2.5f, 3.0f };
-    private float currentPlaybackSpeed = 1;
+    float currentPlaybackSpeed = 1;
 
 
     public MediaItem getCurrentlyPlayingPodcast() {
@@ -219,7 +219,7 @@ public class PodcastPlaybackService extends MediaBrowserServiceCompat {
     /**
      * Background Runnable thread
      * */
-    private Runnable mUpdateTimeTask = new Runnable() {
+    Runnable mUpdateTimeTask = new Runnable() {
         public void run() {
             sendMediaStatus();
             mHandler.postDelayed(this, delay);
@@ -356,7 +356,7 @@ public class PodcastPlaybackService extends MediaBrowserServiceCompat {
     };
 
 
-    private final class MediaSessionCallback extends MediaSessionCompat.Callback {
+    final class MediaSessionCallback extends MediaSessionCompat.Callback {
         @Override
         public void onPlay() {
             EventBus.getDefault().post(new TogglePlayerStateEvent());

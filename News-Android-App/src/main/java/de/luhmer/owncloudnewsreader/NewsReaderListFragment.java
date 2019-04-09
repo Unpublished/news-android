@@ -83,7 +83,7 @@ public class NewsReaderListFragment extends Fragment implements OnCreateContextM
      * The fragment's current callback object, which is notified of list item
      * clicks.
      */
-    private Callbacks mCallbacks = null;
+    Callbacks mCallbacks = null;
 
 
 	@SuppressWarnings("unused")
@@ -124,7 +124,7 @@ public class NewsReaderListFragment extends Fragment implements OnCreateContextM
 		void onTopItemLongClicked(long idFeed, boolean isFolder);
 	}
 
-	private SubscriptionExpandableListAdapter lvAdapter;
+	SubscriptionExpandableListAdapter lvAdapter;
 
     @BindView(R.id.expandableListView) protected ExpandableListView eListView;
 	@BindView(R.id.urlTextView) protected TextView urlTextView;

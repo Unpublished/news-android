@@ -36,10 +36,10 @@ import okio.BufferedSource;
  */
 public class RssItemObservable implements Publisher<Integer> {
 
-    private DatabaseConnectionOrm mDbConn;
+    DatabaseConnectionOrm mDbConn;
     private API mApi;
-    private SharedPreferences mPrefs;
-    private static final String TAG = RssItemObservable.class.getCanonicalName();
+    SharedPreferences mPrefs;
+    static final String TAG = RssItemObservable.class.getCanonicalName();
     private static int maxSizePerSync = 300;
 
     public RssItemObservable(DatabaseConnectionOrm dbConn, API api, SharedPreferences prefs) {

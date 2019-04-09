@@ -50,16 +50,16 @@ public class NewsDetailImageDialogFragment extends DialogFragment {
 
     private static final int REQUEST_DIRECTORY = 0;
     public enum TYPE { IMAGE, URL }
-    private static final String TAG = NewsDetailImageDialogFragment.class.getCanonicalName();
+    static final String TAG = NewsDetailImageDialogFragment.class.getCanonicalName();
 
     private int mDialogIcon;
     private String mDialogTitle;
     private String mDialogText;
-    private URL mImageUrl;
+    URL mImageUrl;
     private TYPE mDialogType;
 
-    private long downloadID;
-    private DownloadManager downloadManager;
+    long downloadID;
+    DownloadManager downloadManager;
     private BroadcastReceiver downloadCompleteReceiver;
 
     private LinkedHashMap<String, MenuAction> mMenuItems;
@@ -311,7 +311,7 @@ public class NewsDetailImageDialogFragment extends DialogFragment {
         dismiss();
     }
 
-    private void downloadImage(URL url) {
+    void downloadImage(URL url) {
         Toast.makeText(getActivity().getApplicationContext(), getString(R.string.toast_img_download_wait), Toast.LENGTH_SHORT).show();
 
         if(isExternalStorageWritable()) {
@@ -335,7 +335,7 @@ public class NewsDetailImageDialogFragment extends DialogFragment {
     }
 
 
-    private void storeCachedImage(String path) {
+    void storeCachedImage(String path) {
         final String CHANNEL_ID = "Store cached Image";
         if(isExternalStorageWritable()) {
             String filename = path.substring(path.lastIndexOf('/') + 1, path.length());
@@ -371,7 +371,7 @@ public class NewsDetailImageDialogFragment extends DialogFragment {
     }
 
 
-    private void changeDownloadDir() {
+    void changeDownloadDir() {
         final Intent chooserIntent = new Intent(getActivity(), DirectoryChooserActivity.class);
         final DirectoryChooserConfig config = DirectoryChooserConfig.builder()
                 .initialDirectory(getActivity().getPreferences(Context.MODE_PRIVATE).getString("manualImageDownloadLocation", ""))

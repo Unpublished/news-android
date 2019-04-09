@@ -89,7 +89,7 @@ import static de.luhmer.owncloudnewsreader.Constants.MIN_NEXTCLOUD_FILES_APP_VER
  */
 public class LoginDialogFragment extends DialogFragment {
 
-    private final String TAG = LoginDialogFragment.class.getCanonicalName();
+    final String TAG = LoginDialogFragment.class.getCanonicalName();
 
 	/**
 	 * Keep track of the login task to ensure we can cancel it if requested.
@@ -98,7 +98,7 @@ public class LoginDialogFragment extends DialogFragment {
     protected @Inject SharedPreferences mPrefs;
 	//private UserLoginTask mAuthTask = null;
 
-    private Activity mActivity;
+    Activity mActivity;
 
     // Values for email and password at the time of the login attempt.
     private String mUsername;
@@ -115,9 +115,9 @@ public class LoginDialogFragment extends DialogFragment {
     protected @BindView(R.id.imgView_ShowPassword) ImageView mImageViewShowPwd;
     protected @BindView(R.id.swSingleSignOn) Switch mSwSingleSignOn;
 
-    private SingleSignOnAccount importedAccount = null;
-    private boolean mPasswordVisible = false;
-    private LoginSuccessfulListener listener;
+    SingleSignOnAccount importedAccount = null;
+    boolean mPasswordVisible = false;
+    LoginSuccessfulListener listener;
 
     public interface LoginSuccessfulListener {
         void loginSucceeded();
@@ -410,7 +410,7 @@ public class LoginDialogFragment extends DialogFragment {
 		}
 	}
 
-	private void finishLogin(final ProgressDialog dialogLogin) {
+	void finishLogin(final ProgressDialog dialogLogin) {
         mApi.getAPI().version()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

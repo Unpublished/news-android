@@ -65,12 +65,12 @@ public class AdBlocker {
         AsyncTaskHelper.StartAsyncTask(loadAdRulesAsyncTask);
     }
 
-    private static File getFile(Context context) {
+    static File getFile(Context context) {
         return new File(context.getFilesDir(), AD_HOSTS_FILE);
     }
 
     @WorkerThread
-    private static void loadFromInternet(Context context) throws IOException {
+    static void loadFromInternet(Context context) throws IOException {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url("https://pgl.yoyo.org/as/serverlist.php?hostformat=nohtml&showintro=0").build();
         Response response = client.newCall(request).execute();
@@ -82,7 +82,7 @@ public class AdBlocker {
     }
 
     @WorkerThread
-    private static void loadFromAssets(Context context) throws IOException {
+    static void loadFromAssets(Context context) throws IOException {
         InputStream stream = new FileInputStream(getFile(context));
         BufferedSource buffer = Okio.buffer(Okio.source(stream));
         String line;

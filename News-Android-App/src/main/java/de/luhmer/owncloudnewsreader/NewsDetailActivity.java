@@ -241,7 +241,7 @@ public class NewsDetailActivity extends PodcastFragmentActivity {
 		return super.onKeyUp(keyCode, event);
 	}
 
-	private void pageChanged(int position)
+	void pageChanged(int position)
 	{
 		StopVideoOnCurrentPage();
 		currentPosition = position;

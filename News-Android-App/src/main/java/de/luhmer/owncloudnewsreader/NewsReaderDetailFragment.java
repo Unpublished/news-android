@@ -89,20 +89,20 @@ public class NewsReaderDetailFragment extends Fragment {
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefresh;
 
-    private Long idFeed;
-    private Drawable markAsReadDrawable;
-    private Drawable starredDrawable;
+    Long idFeed;
+    Drawable markAsReadDrawable;
+    Drawable starredDrawable;
     private int accentColor;
     private Parcelable layoutManagerSavedState;
 
     // Variables related to mark as read when scrolling
-    private boolean mMarkAsReadWhileScrollingEnabled;
+    boolean mMarkAsReadWhileScrollingEnabled;
     private int previousFirstVisibleItem = -1;
 
-    private Long idFolder;
+    Long idFolder;
     private String titel;
     private int onResumeCount = 0;
-    private RecyclerView.OnItemTouchListener itemTouchListener;
+    RecyclerView.OnItemTouchListener itemTouchListener;
 
     protected DisposableObserver<List<RssItem>> SearchResultObserver = new DisposableObserver<List<RssItem>>() {
         @Override
@@ -344,7 +344,7 @@ public class NewsReaderDetailFragment extends Fragment {
         return rootView;
     }
 
-    private void handleMarkAsReadScrollEvent() {
+    void handleMarkAsReadScrollEvent() {
         LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
         NewsListRecyclerAdapter adapter = (NewsListRecyclerAdapter) recyclerView.getAdapter();
 
@@ -494,7 +494,7 @@ public class NewsReaderDetailFragment extends Fragment {
         }
     }
 
-    private class RecyclerViewOnGestureListener extends GestureDetector.SimpleOnGestureListener {
+    class RecyclerViewOnGestureListener extends GestureDetector.SimpleOnGestureListener {
         private int minLeftEdgeDistance = -1;
 
         private void initEdgeDistance() {
@@ -507,7 +507,6 @@ public class NewsReaderDetailFragment extends Fragment {
                 minLeftEdgeDistance = ((NewsReaderListActivity) getActivity()).getEdgeSizeOfDrawer();
             }
         }
-
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             if (minLeftEdgeDistance == -1) { // if not initialized
