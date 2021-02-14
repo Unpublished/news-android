@@ -31,7 +31,10 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: ./gradlew connectAndroidTest --stacktrace
+          script: |
+            adb logcat -c
+            adb logcat *:E -v color &
+            ./gradlew connectAndroidTest --stacktrace
       - name: Upload results
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
