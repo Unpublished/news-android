@@ -32,6 +32,12 @@ jobs:
         with:
           api-level: 29
           script: ./gradlew connectAndroidTest --stacktrace
+      - name: Upload results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: instrumentation-test-results
+          path: ./**/build/reports/androidTests/connected/**
 
   codeql:
     name: CodeQL security scan
