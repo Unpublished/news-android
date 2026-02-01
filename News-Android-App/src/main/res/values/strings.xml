@@ -388,6 +388,7 @@
     <string name="content_desc_pause">Pause</string>
     <string name="content_desc_playback_speed">Playback speed</string>
     <string name="content_desc_rewind">Rewind</string>
+    <string name="content_desc_close">Close</string>
     <string name="content_desc_forward">Forward</string>
     <string name="content_desc_expand">Expand</string>
     <string name="content_desc_collapse">Collapse</string>

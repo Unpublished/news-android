@@ -57,7 +57,7 @@ class SettingsActivity : ComponentActivity() {
     @Inject
     lateinit var mPrefs: SharedPreferences
 
-    var resultIntent = Intent()
+    internal var resultIntent = Intent()
 
     companion object {
         const val EDT_USERNAME_STRING = "edt_username"
@@ -148,7 +148,7 @@ fun SettingsScreen(
                     IconButton(onClick = onNavigateUp) {
                         Icon(
                             painter = painterResource(android.R.drawable.ic_menu_close_clear_cancel),
-                            contentDescription = "Navigate up"
+                            contentDescription = stringResource(R.string.content_desc_close)
                         )
                     }
                 },
