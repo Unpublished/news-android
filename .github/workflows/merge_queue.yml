@@ -2,7 +2,7 @@ on:
     pull_request:
 jobs:
   can_merge:
-    needs: [codeql, detekt, spotless, validation, lint, test, apk]
+    needs: [ci, codeql, analysis]
     if: always()
     permissions:
       actions: read
@@ -15,3 +15,9 @@ jobs:
           echo "ALL_SUCCESS=$(echo "$NEEDS_JSON" | jq '. | to_entries | map([.value.result == "success", .value.result == "skipped"] | any) | all')" >>$GITHUB_ENV
       - name: check outcomes
         run: "[ $ALL_SUCCESS == true ]"
+  "ci":
+    uses: ./.github/workflows/ci.yml
+  "codeql":
+    uses: ./.github/workflows/codeql.yml
+  "analysis":
+    uses: ./.github/workflows/analysis.yml
