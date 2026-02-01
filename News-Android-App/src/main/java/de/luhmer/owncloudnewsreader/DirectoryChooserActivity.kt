@@ -3,7 +3,6 @@ package de.luhmer.owncloudnewsreader
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.Environment
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
@@ -68,7 +67,8 @@ class DirectoryChooserActivity : ComponentActivity() {
         }
 
         val initialDirectory = config?.initialDirectory?.takeIf { it.isNotEmpty() }
-            ?: Environment.getExternalStorageDirectory().absolutePath
+            ?: getExternalFilesDir(null)?.absolutePath
+            ?: filesDir.absolutePath
 
         setContent {
             MaterialTheme {
@@ -165,9 +165,13 @@ fun DirectoryChooserScreen(
                 }
 
                 // List subdirectories
-                val directories = currentDir.listFiles { file ->
-                    file.isDirectory && !file.isHidden
-                }?.sortedBy { it.name.lowercase() } ?: emptyList()
+                val directories = try {
+                    currentDir.listFiles { file ->
+                        file.isDirectory && !file.isHidden
+                    }?.sortedBy { it.name.lowercase() } ?: emptyList()
+                } catch (e: SecurityException) {
+                    emptyList()
+                }
 
                 items(directories) { directory ->
                     DirectoryItem(
@@ -231,7 +235,7 @@ fun DirectoryItem(
             Icon(
                 painter = painterResource(
                     if (isParent) android.R.drawable.ic_menu_upload
-                    else android.R.drawable.ic_menu_save
+                    else android.R.drawable.ic_menu_sort_by_size
                 ),
                 contentDescription = if (isParent) "Parent directory" else "Directory",
                 tint = MaterialTheme.colorScheme.primary
